@@ -1,0 +1,195 @@
+[
+  {
+    "id": "resp-seed-1",
+    "playerNick": "LukiBlox_BR",
+    "avatarColor": "#00A2FF",
+    "createdAt": "22/10/2026 09:15",
+    "isSample": true,
+    "answers": {
+      "q1": "9 a 11 anos",
+      "q2": "Todos os dias",
+      "q3": [
+        "Brookhaven",
+        "Blox Fruits",
+        "99 Nights in the Forest"
+      ],
+      "q3_other": "",
+      "q4": [
+        "Explorar e descobrir lugares",
+        "Jogar com amigos",
+        "Completar missões e ganhar recompensas"
+      ],
+      "q5": "Com amigos",
+      "q6": [
+        "Ganhar itens e recompensas",
+        "Jogar com amigos",
+        "Novidades e atualizações"
+      ],
+      "q7": [
+        "Ter que gastar Robux",
+        "Demorar para evoluir"
+      ],
+      "q7_other": "",
+      "q8": [
+        "Aventura e mundo aberto",
+        "Mistério e investigação",
+        "Sobrevivência"
+      ],
+      "q8_other": "",
+      "q9": "Sim, com certeza!",
+      "q10": [
+        "Indicação dos amigos",
+        "Vídeo no TikTok ou YouTube",
+        "Recompensas e eventos"
+      ],
+      "q11": "Um jogo de acampamento secreto onde de dia a gente constrói cabanas e cuida de pets dragões, e de noite aparece um mistério na floresta para resolver em equipe!",
+      "q12": "Poder juntar construções dos amigos num mesmo mapa gigante sem precisar pagar Robux nos servidores privados.",
+      "q13": "Se tiver missões em dupla que dão itens brilhantes grátis para o avatar e segredos escondidos no mapa!"
+    }
+  },
+  {
+    "id": "resp-seed-2",
+    "playerNick": "bia_starblocks",
+    "avatarColor": "#FF3E9D",
+    "createdAt": "22/10/2026 09:42",
+    "isSample": true,
+    "answers": {
+      "q1": "9 a 11 anos",
+      "q2": "Todos os dias",
+      "q3": [
+        "Brookhaven",
+        "Adopt Me!",
+        "Dress to Impress",
+        "Grow a Garden"
+      ],
+      "q3_other": "",
+      "q4": [
+        "Construir e personalizar",
+        "Cuidar de animais ou personagens",
+        "Jogar com amigos"
+      ],
+      "q5": "Com amigos",
+      "q6": [
+        "Ganhar itens e recompensas",
+        "Desbloquear novos lugares",
+        "Novidades e atualizações"
+      ],
+      "q7": [
+        "Ter que gastar Robux",
+        "Muitos bugs"
+      ],
+      "q7_other": "",
+      "q8": [
+        "Simulador de vida",
+        "Construção e criatividade",
+        "Mistério e investigação"
+      ],
+      "q8_other": "",
+      "q9": "Sim, com certeza!",
+      "q10": [
+        "Vídeo no TikTok ou YouTube",
+        "Personagens e cenários bonitos",
+        "Indicação dos amigos"
+      ],
+      "q11": "Uma cidade colorida onde você cria sua loja de roupas e doces, adota bichinhos mágicos e tem desfiles com temas surpresa!",
+      "q12": "Mais roupas e acessórios fofos que a gente ganha fazendo missão em vez de comprar com Robux.",
+      "q13": "Poder morar na mesma casa ou abrir uma loja juntas dentro do jogo!"
+    }
+  },
+  {
+    "id": "resp-seed-3",
+    "playerNick": "PedroGamer_77",
+    "avatarColor": "#00E676",
+    "createdAt": "22/10/2026 10:05",
+    "isSample": true,
+    "answers": {
+      "q1": "12 a 14 anos",
+      "q2": "Algumas vezes por semana",
+      "q3": [
+        "Blox Fruits",
+        "Grow a Garden",
+        "99 Nights in the Forest"
+      ],
+      "q3_other": "Doors",
+      "q4": [
+        "Lutar e enfrentar desafios",
+        "Completar missões e ganhar recompensas",
+        "Explorar e descobrir lugares"
+      ],
+      "q5": "Com amigos",
+      "q6": [
+        "Subir de nível",
+        "Ganhar itens e recompensas",
+        "Novidades e atualizações"
+      ],
+      "q7": [
+        "Jogos repetitivos",
+        "Demorar para evoluir",
+        "Ter que gastar Robux"
+      ],
+      "q7_other": "",
+      "q8": [
+        "Aventura e mundo aberto",
+        "Sobrevivência",
+        "Competição e desafios"
+      ],
+      "q8_other": "",
+      "q9": "Sim, com certeza!",
+      "q10": [
+        "Uma ideia diferente",
+        "Indicação dos amigos",
+        "Vídeo no TikTok ou YouTube"
+      ],
+      "q11": "Um jogo que mistura sobrevivência na ilha com poderes elementais e construção de fortalezas contra chefões.",
+      "q12": "Modo história cooperativo que não fique só repetindo a mesma missão mil vezes para subir de nível.",
+      "q13": "Batalhas de clãs ou desafios onde cada amigo tem um poder diferente para vencer o boss!"
+    }
+  },
+  {
+    "id": "resp-seed-4",
+    "playerNick": " Manu_Kawaii08",
+    "avatarColor": "#FFB300",
+    "createdAt": "22/10/2026 10:30",
+    "isSample": true,
+    "answers": {
+      "q1": "6 a 8 anos",
+      "q2": "Finais de semana",
+      "q3": [
+        "Adopt Me!",
+        "Brookhaven",
+        "Dress to Impress"
+      ],
+      "q3_other": "",
+      "q4": [
+        "Cuidar de animais ou personagens",
+        "Explorar e descobrir lugares",
+        "Jogar com amigos"
+      ],
+      "q5": "Com amigos",
+      "q6": [
+        "Ganhar itens e recompensas",
+        "Desbloquear novos lugares"
+      ],
+      "q7": [
+        "Ter que gastar Robux",
+        "Poucas novidades"
+      ],
+      "q7_other": "",
+      "q8": [
+        "Simulador de vida",
+        "Aventura e mundo aberto",
+        "Construção e criatividade"
+      ],
+      "q8_other": "",
+      "q9": "Sim, com certeza!",
+      "q10": [
+        "Personagens e cenários bonitos",
+        "Indicação dos amigos",
+        "Recompensas e eventos"
+      ],
+      "q11": "Um parque de diversões gigante de pets onde os cachorrinhos e gatinhos voam e ganham poderes de arco-íris!",
+      "q12": "Mais minigames fáceis para brincar com os bichinhos.",
+      "q13": "Se tiver presentes surpresa quando a gente entra com um amigo!"
+    }
+  }
+]

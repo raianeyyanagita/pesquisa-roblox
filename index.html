@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BloxQuest 🎮 — Missão Criadores de Jogos Roblox!</title>
+  <meta name="description" content="Missão interativa para jogadores de Roblox! Responda às 13 fases, ganhe XP e ajude a criar o próximo grande jogo do universo Blox!" />
+
+  <!-- Fontes estilo Gamer / Roblox: Fredoka & Plus Jakarta Sans & Press Start 2P -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- FUNDO ANIMADO UNIVERSO ROBLOX (Blocos 3D, Studs, Moedas & Partículas) -->
+  <div class="roblox-bg-world" aria-hidden="true">
+    <div class="grid-floor"></div>
+    <div class="floating-blocks" id="floatingBlocksContainer">
+      <div class="r-block block-blue"></div>
+      <div class="r-block block-green"></div>
+      <div class="r-block block-pink"></div>
+      <div class="r-block block-gold"></div>
+      <div class="r-block block-purple"></div>
+      <div class="r-block block-red"></div>
+    </div>
+  </div>
+
+  <!-- TOPO / HUD DO JOGADOR -->
+  <header class="game-hud-header">
+    <div class="container hud-inner">
+      <div class="brand-roblox" id="goHomeBtn">
+        <div class="tilted-roblox-cube">
+          <span class="cube-hole"></span>
+        </div>
+        <div class="brand-titles">
+          <strong>BLOX<span>QUEST</span></strong>
+          <small>Pesquisa Oficial de Criadores</small>
+        </div>
+      </div>
+
+      <!-- Barra de XP / Nível durante o Quiz -->
+      <div class="hud-xp-bar" id="hudXpContainer">
+        <div class="xp-labels">
+          <span class="xp-badge" id="hudLevelText">🌟 NÍVEL 1 — INICIANTE</span>
+          <span class="xp-points" id="hudCoinsText">🪙 0 BloxCoins</span>
+        </div>
+        <div class="xp-track">
+          <div class="xp-fill" id="hudXpFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Botões de Alternância (Missão da Criança vs Painel de Análise de Mercado) -->
+      <div class="hud-actions">
+        <button type="button" class="btn-blox btn-blox-Sound" id="toggleSoundBtn" title="Ativar/Desativar Efeitos Sonoros de Videogame">
+          🔊 Som: ON
+        </button>
+        <button type="button" class="btn-blox btn-blox-purple" id="openAnalyticsBtn" title="Acesso restrito para a criadora da pesquisa">
+          🔒 Área da Pesquisadora (<span id="totalResponsesBadge">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-stage">
+
+    <!-- ====================================================================
+         TELA 1: LOBBY INICIAL (BOAS-VINDAS PARA A CRIANÇA + AVATAR NOOB)
+         ==================================================================== -->
+    <section class="game-screen active" id="screenLobby">
+      <div class="lobby-card">
+        <div class="lobby-left">
+          <div class="mission-tag">🚀 MISSÃO ESPECIAL ROBLOX • 13 FASES RÁPIDAS</div>
+          <h1 class="lobby-title">
+            Ajude a inventar o próximo <span>JOGO ÉPICO</span> do Roblox!
+          </h1>
+          <p class="lobby-desc">
+            Ei, jogador(a)! Queremos saber quais são os seus jogos favoritos e o que você sonha em ver num jogo novo. Complete as <strong>13 fases deste Obby</strong>, ganhe <strong>BloxCoins</strong> e desbloqueie seu <strong>Troféu de Criador Mestre</strong> no final!
+          </p>
+
+          <!-- Personalização Rápida do Avatar Blox -->
+          <div class="player-setup-box">
+            <div class="form-field">
+              <label for="playerNickInput">🎮 Digite seu Nome ou Apelido de Jogador (Opcional):</label>
+              <input type="text" id="playerNickInput" placeholder="Ex.: SuperGamer_BR, LukiBlox, BiaStar..." maxlength="28" />
+            </div>
+
+            <div class="avatar-color-picker">
+              <span>🎨 Escolha a cor da sua armadura Blox:</span>
+              <div class="color-swatches" id="avatarColorSwatches">
+                <button type="button" class="swatch active" data-color="#00A2FF" style="background:#00A2FF" aria-label="Azul Blox"></button>
+                <button type="button" class="swatch" data-color="#00E676" style="background:#00E676" aria-label="Verde Obby"></button>
+                <button type="button" class="swatch" data-color="#FF3E9D" style="background:#FF3E9D" aria-label="Rosa Dress"></button>
+                <button type="button" class="swatch" data-color="#FFB300" style="background:#FFB300" aria-label="Ouro Blox"></button>
+                <button type="button" class="swatch" data-color="#9C27B0" style="background:#9C27B0" aria-label="Roxo Fruta"></button>
+                <button type="button" class="swatch" data-color="#FF3D00" style="background:#FF3D00" aria-label="Vermelho Lava"></button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-blox btn-blox-green btn-blox-xl pulse-cta" id="startMissionBtn">
+            <span>▶ COMEÇAR MISSÃO AGORA!</span>
+          </button>
+          <div class="ip-limit-badge" id="ipStatusBadge">
+            🛡️ Proteção Anti-Spam Ativa: limite de <strong>2 respostas por conexão (IP)</strong>
+          </div>
+        </div>
+
+        <!-- Personagem Roblox (Blocky Avatar Animado em CSS/SVG) -->
+        <div class="lobby-right">
+          <div class="obby-platform-scene">
+            <div class="floating-coin coin-1">🪙 +100 XP</div>
+            <div class="floating-coin coin-2">⭐ LEVEL UP!</div>
+
+            <!-- Bonequinho Estilo Roblox Animado -->
+            <div class="roblox-character" id="lobbyAvatar">
+              <div class="char-head">
+                <div class="head-stud"></div>
+                <div class="char-face">
+                  <span class="eye left"></span>
+                  <span class="eye right"></span>
+                  <span class="smile"></span>
+                </div>
+              </div>
+              <div class="char-body">
+                <div class="char-arm left"></div>
+                <div class="char-torso" id="avatarTorsoColor">
+                  <span class="torso-logo">R</span>
+                </div>
+                <div class="char-arm right waving"></div>
+              </div>
+              <div class="char-legs">
+                <div class="char-leg left"></div>
+                <div class="char-leg right"></div>
+              </div>
+            </div>
+
+            <!-- Plataforma de Blocos de Obby -->
+            <div class="obby-pad">
+              <div class="pad-studs">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="pad-label">SPAWN POINT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TELA 2: OBBY QUIZ INTERATIVO (AS 13 PERGUNTAS EM FASES)
+         ==================================================================== -->
+    <section class="game-screen" id="screenQuiz">
+      <!-- Trilha de Checkpoints do Obby (1 a 13) -->
+      <div class="obby-checkpoints-bar" id="obbyCheckpointsBar">
+        <!-- Gerado dinamicamente via JS -->
+      </div>
+
+      <div class="question-stage-card" id="questionStageCard">
+        <div class="question-top-meta">
+          <span class="stage-pill" id="questionPhaseBadge">FASE 1 DE 13</span>
+          <span class="stage-hint" id="questionHintBadge">Escolha 1 opção</span>
+        </div>
+
+        <h2 class="question-title" id="questionTitle">1. Qual é a sua idade?</h2>
+        <p class="question-subtitle" id="questionSubtitle"></p>
+
+        <!-- Área de Opções ou Campo Aberto -->
+        <div class="options-grid" id="optionsContainer">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <!-- Campo extra caso marque "Outro" -->
+        <div class="other-input-wrap" id="otherInputWrap" hidden>
+          <label for="otherTextInput">✨ Qual outro? Conta pra gente:</label>
+          <input type="text" id="otherTextInput" placeholder="Digite aqui..." />
+        </div>
+
+        <!-- Navegação entre Fases -->
+        <div class="quiz-footer-nav">
+          <button type="button" class="btn-blox btn-blox-dark" id="prevQuestionBtn">
+            ⬅ Voltar Fase
+          </button>
+          <button type="button" class="btn-blox btn-blox-green btn-blox-lg" id="nextQuestionBtn">
+            Próxima Fase (+100 XP) ➡
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TELA 3: VITÓRIA! (TROFÉU DESBLOQUEADO + COMPARTILHAR)
+         ==================================================================== -->
+    <section class="game-screen" id="screenVictory">
+      <div class="victory-card">
+        <div class="confetti-burst" id="confettiBurst"></div>
+        <div class="trophy-badge">🏆</div>
+        <span class="mission-tag">MISSÃO COMPLETA • +1.300 BLOXCOINS GANHOS!</span>
+        <h2 class="victory-title">GG! Você é um(a) <span id="victoryPlayerName">Criador(a) Lendário(a)</span>!</h2>
+        <p class="victory-desc">
+          Suas respostas foram salvas no cofre oficial da pesquisa! Muito obrigado por ajudar a construir um jogo muito mais divertido no Roblox!
+        </p>
+
+        <div class="victory-stats-row">
+          <div class="v-stat">
+            <strong>13 / 13</strong>
+            <span>Fases Concluídas</span>
+          </div>
+          <div class="v-stat">
+            <strong>🪙 1.300</strong>
+            <span>BloxCoins</span>
+          </div>
+          <div class="v-stat">
+            <strong>⭐ RANK S+</strong>
+            <span>Mestre de Ideias</span>
+          </div>
+        </div>
+
+        <div class="victory-actions">
+          <button type="button" class="btn-blox btn-blox-blue btn-blox-lg" id="playAgainBtn">
+            🔄 Outro Jogador Vai Responder
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TELA 4: PAINEL DE ANÁLISE DE MERCADO & LEVANTAMENTO (DASHBOARD)
+         ==================================================================== -->
+    <section class="game-screen" id="screenAnalytics">
+      <div class="analytics-header-card">
+        <div>
+          <span class="mission-tag">📊 INTELIGÊNCIA DE MERCADO ROBLOX</span>
+          <h2>Levantamento & Análise das Respostas</h2>
+          <p>Acompanhe em tempo real os gráficos, o perfil das crianças, os jogos mais amados e as ideias abertas para criar seu jogo no Roblox.</p>
+        </div>
+        <div class="analytics-top-buttons">
+          <button type="button" class="btn-blox btn-blox-green" id="backToQuizBtn">
+            🎮 Voltar ao Questionário
+          </button>
+          <button type="button" class="btn-blox btn-blox-blue" id="exportCsvBtn">
+            📥 Baixar Planilha (CSV / Excel)
+          </button>
+          <button type="button" class="btn-blox btn-blox-gold" id="openFreeHostingGuideBtn">
+            🌐 Como Publicar Grátis (Sem Pagar Domínio)
+          </button>
+        </div>
+      </div>
+
+      <!-- KPIs Resumo Executivo -->
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-blue">
+          <span class="kpi-label">Total de Crianças / Respostas</span>
+          <strong class="kpi-value" id="kpiTotalResponses">0</strong>
+          <small id="kpiSampleNotice">Inclui respostas no banco</small>
+        </div>
+        <div class="kpi-card kpi-green">
+          <span class="kpi-label">Faixa Etária Dominante</span>
+          <strong class="kpi-value" id="kpiTopAge">—</strong>
+          <small>Público principal</small>
+        </div>
+        <div class="kpi-card kpi-pink">
+          <span class="kpi-label">Jogo #1 Mais Jogado</span>
+          <strong class="kpi-value" id="kpiTopGame">—</strong>
+          <small>Referência de mercado</small>
+        </div>
+        <div class="kpi-card kpi-gold">
+          <span class="kpi-label">Aprovação de Jogo Híbrido (Q9)</span>
+          <strong class="kpi-value" id="kpiHybridRate">—</strong>
+          <small>Topam misturar estilos</small>
+        </div>
+      </div>
+
+      <!-- INSIGHTS AUTOMÁTICOS DE MERCADO (RECOMENDAÇÃO DE GAME DESIGN) -->
+      <div class="market-insights-box">
+        <div class="insights-header">
+          <span>🧠 Diagnóstico Automático da Pesquisa (O Que Criar no Roblox?)</span>
+        </div>
+        <div class="insights-content" id="autoMarketSummary">
+          Carregando análise estratégica...
+        </div>
+      </div>
+
+      <!-- GRÁFICOS DAS PERGUNTAS 1 A 10 -->
+      <div class="charts-grid" id="chartsGridContainer">
+        <!-- Gerado dinamicamente com barras animadas, porcentagens e votos -->
+      </div>
+
+      <!-- MURAL DE IDEIAS CRIATIVAS (PERGUNTAS ABERTAS 11, 12 e 13) -->
+      <div class="open-ideas-section">
+        <div class="section-head-flex">
+          <div>
+            <h3>💡 Mural de Ideias das Crianças (Perguntas 11, 12 e 13)</h3>
+            <p>Respostas abertas escritas pelos jogadores sobre o jogo dos sonhos, o que falta no Roblox e como atrair amigos.</p>
+          </div>
+          <div class="data-manage-btns">
+            <button type="button" class="btn-blox btn-blox-gold btn-sm" id="resetIpLimitBtn" title="Libera novamente o seu IP caso você queira fazer mais testes!">
+              🔓 Liberar Meu IP para Novos Testes
+            </button>
+            <button type="button" class="btn-blox btn-blox-dark btn-sm" id="clearSamplesBtn" title="Remove apenas os 4 exemplos iniciais para deixar só respostas reais">
+              🧹 Remover Exemplos de Teste
+            </button>
+            <button type="button" class="btn-blox btn-blox-dark btn-sm" id="exportJsonBtn">
+              💾 Backup JSON
+            </button>
+            <label class="btn-blox btn-blox-dark btn-sm" style="cursor:pointer;">
+              📂 Importar JSON
+              <input type="file" id="importJsonInput" accept=".json" hidden />
+            </label>
+          </div>
+        </div>
+
+        <div class="ideas-cards-list" id="openIdeasList">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: GUIA PARA PUBLICAR GRÁTIS NO GITHUB PAGES + BANCO DE DADOS NA NUVEM -->
+  <div class="blox-modal-backdrop" id="hostingModal" aria-hidden="true">
+    <div class="blox-modal-card">
+      <div class="blox-modal-header">
+        <h3>☁️ Conexão Nuvem Gratuita para GitHub Pages</h3>
+        <button type="button" class="blox-close-btn" id="closeHostingModalBtn">&times;</button>
+      </div>
+      <div class="blox-modal-body">
+        <div class="guide-step-box">
+          <h4>🔥 Banco em Tempo Real Grátis (Firebase Realtime Database ou JSONBin)</h4>
+          <p>Para que todas as respostas das crianças no <strong>GitHub Pages</strong> apareçam automaticamente nos gráficos deste painel e bloqueiem <strong>2 respostas por IP globalmente</strong>, cole abaixo a URL do seu banco gratuito (ex: <code>https://seu-projeto-default-rtdb.firebaseio.com</code>):</p>
+          <div class="webhook-config-row">
+            <input type="url" id="cloudDbUrlInput" placeholder="Ex.: https://pesquisa-roblox-default-rtdb.firebaseio.com" />
+          </div>
+        </div>
+
+        <div class="guide-step-box">
+          <h4>📩 Opcional: Receber também por E-mail / Planilha (Formspree)</h4>
+          <p>Se quiser receber cada resposta no seu e-mail via Formspree, cole seu link abaixo:</p>
+          <div class="webhook-config-row">
+            <input type="url" id="cloudWebhookInput" placeholder="Ex.: https://formspree.io/f/seu-codigo" />
+            <button type="button" class="btn-blox btn-blox-green btn-sm" id="saveWebhookBtn">💾 Salvar Conexões</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE SENHA DA PESQUISADORA (PARA CRIANÇAS NÃO MEXEREM NOS DADOS) -->
+  <div class="blox-modal-backdrop" id="adminPinModal" aria-hidden="true">
+    <div class="blox-modal-card" style="max-width: 420px;">
+      <div class="blox-modal-header">
+        <h3>🔒 Acesso da Pesquisadora</h3>
+        <button type="button" class="blox-close-btn" id="closePinModalBtn">&times;</button>
+      </div>
+      <div class="blox-modal-body">
+        <p style="color:#C7D3F4; font-size:0.95rem;">Digite a senha de administradora para ver os gráficos e gerenciar o levantamento (Senha padrão: <code>123456</code>):</p>
+        <form id="adminPinForm" style="display:flex; flex-direction:column; gap:12px;">
+          <input type="password" id="adminPinInput" placeholder="Senha (123456)" style="padding:12px 14px; border-radius:12px; border:2px solid #00A2FF; background:#0F1526; color:#FFF; font-size:1rem;" required />
+          <button type="submit" class="btn-blox btn-blox-green">🔓 Abrir Painel de Análise</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Gamer -->
+  <div id="bloxToast" class="blox-toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
